@@ -1,64 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Downloading Assignment...</title>
-  <style>
-    /* ... (keep previous styles) ... */
-    .fake-button {
-      background: #ff4444;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      margin: 10px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloading Assignment...</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .virus-warning {
+            color: #ff0000;
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        #progress-bar {
+            width: 80%;
+            height: 30px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px auto;
+        }
+        #progress {
+            height: 100%;
+            background: #00ff00;
+            transition: width 0.5s;
+        }
+        .fake-button {
+            background: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        .fake-button:hover {
+            background: #ff6666;
+        }
+        .hidden {
+            display: none;
+        }
+        #secret-link {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #00ccff;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        #status {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Downloading "assignment_final.zip"...</h1>
-  <div class="virus-warning" id="warning">⚠️ WARNING: FILE CORRUPTED. SCANNING FOR VIRUSES...</div>
-  <div id="progress-bar">
-    <div id="progress"></div>
-  </div>
-  <p id="status">Initializing...</p>
-  
-  <!-- Fake "Cancel" button that Rickrolls -->
-  <button class="fake-button" onclick="rickroll()">Cancel Download</button>
+    <h1>Downloading "assignment_final.zip"...</h1>
+    <div class="virus-warning" id="warning">⚠️ WARNING: FILE CORRUPTED. SCANNING FOR VIRUSES...</div>
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+    <p id="status">Initializing...</p>
+    
+    <!-- Fake "Cancel" button that Rickrolls -->
+    <button class="fake-button" onclick="rickroll()">Cancel Download</button>
 
-  <!-- Hidden Rickroll trigger -->
-  <p id="secret-link" class="hidden" onclick="rickroll()">[SECRET ADMIN OVERRIDE]</p>
+    <!-- Hidden Rickroll trigger -->
+    <p id="secret-link" class="hidden" onclick="rickroll()">[SECRET ADMIN OVERRIDE]</p>
 
-  <script>
-    const rickroll = () => {
-      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; 
-    };
+    <script>
+        const rickroll = () => {
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; 
+        };
 
-    let messages = [
-      "Detecting quantum encryption...",
-      "Rewriting firewall protocols...",
-      "Bypassing antivirus... 5% complete",
-      "Summoning eldritch backup...",
-      "Deleting System32 (just kidding... or am I?)",
-      "ERROR: User IQ insufficient to download this file"
-    ];
+        let messages = [
+            "Detecting quantum encryption...",
+            "Rewriting firewall protocols...",
+            "Bypassing antivirus... 5% complete",
+            "Summoning eldritch backup...",
+            "Deleting System32 (just kidding... or am I?)",
+            "ERROR: User IQ insufficient to download this file"
+        ];
 
-    let progress = 0;
-    let interval = setInterval(() => {
-      progress += Math.random() * 5;
-      document.getElementById("progress").style.width = progress + "%";
-      document.getElementById("status").innerHTML = messages[Math.floor(Math.random() * messages.length)];
-      
-      // When progress "finishes," show fake error + Rickroll button
-      if (progress >= 100) {
-        clearInterval(interval);
-        document.getElementById("warning").innerHTML = "💀 DOWNLOAD FAILED! Click below to fix:";
-        document.getElementById("status").innerHTML = "Error 404: Common Sense Not Found";
-        document.getElementById("secret-link").classList.remove("hidden");
-      }
-    }, 1500);
-  </script>
+        let progress = 0;
+        let interval = setInterval(() => {
+            progress += Math.random() * 5;
+            document.getElementById("progress").style.width = progress + "%";
+            document.getElementById("status").innerHTML = messages[Math.floor(Math.random() * messages.length)];
+            
+            // When progress "finishes," show fake error + Rickroll button
+            if (progress >= 100) {
+                clearInterval(interval);
+                document.getElementById("warning").innerHTML = "💀 DOWNLOAD FAILED! Click below to fix:";
+                document.getElementById("status").innerHTML = "Error 404: Common Sense Not Found";
+                document.getElementById("secret-link").classList.remove("hidden");
+            }
+        }, 1500);
+    </script>
 </body>
 </html>
