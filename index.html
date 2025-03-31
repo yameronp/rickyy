@@ -11,11 +11,16 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
+            margin: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
         }
         h1 {
             font-size: 2.5em;
@@ -27,7 +32,7 @@
             margin: 20px;
         }
         #progress-bar {
-            width: 80%;
+            width: 100%;
             height: 30px;
             border: 2px solid #fff;
             border-radius: 5px;
@@ -39,6 +44,7 @@
             height: 100%;
             background: #00ff00;
             transition: width 0.5s;
+            width: 0%;
         }
         .fake-button {
             background: #ff4444;
@@ -71,24 +77,26 @@
     </style>
 </head>
 <body>
-    <h1>Downloading "assignment_final.zip"...</h1>
-    <div class="virus-warning" id="warning">⚠️ WARNING: FILE CORRUPTED. SCANNING FOR VIRUSES...</div>
-    <div id="progress-bar">
-        <div id="progress"></div>
+    <div class="container" id="prank-content">
+        <h1>Downloading "assignment_final.zip"...</h1>
+        <div class="virus-warning" id="warning">⚠️ WARNING: FILE CORRUPTED. SCANNING FOR VIRUSES...</div>
+        <div id="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <p id="status">Initializing...</p>
+        
+        <!-- Fake "Cancel" button that triggers the Rickroll -->
+        <button class="fake-button" onclick="showRickRoll()">Cancel Download</button>
+
+        <!-- Hidden Rickroll trigger -->
+        <p id="secret-link" class="hidden" onclick="showRickRoll()">[SECRET ADMIN OVERRIDE]</p>
     </div>
-    <p id="status">Initializing...</p>
-    
-    <!-- Fake "Cancel" button that Rickrolls -->
-    <button class="fake-button" onclick="rickroll()">Cancel Download</button>
-
-    <!-- Hidden Rickroll trigger -->
-    <p id="secret-link" class="hidden" onclick="rickroll()">[SECRET ADMIN OVERRIDE]</p>
-
     <script>
-        const rickroll = () => {
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; 
-        };
-
+        // Function to redirect to Rickroll Short
+        function showRickRoll() {
+            window.location.href = "https://youtube.com/shorts/SXHMnicI6Pg?si=oAuivCRlksu_I02w";
+        }
+    
         let messages = [
             "Detecting quantum encryption...",
             "Rewriting firewall protocols...",
@@ -97,10 +105,11 @@
             "Deleting System32 (just kidding... or am I?)",
             "ERROR: User IQ insufficient to download this file"
         ];
-
+    
         let progress = 0;
         let interval = setInterval(() => {
             progress += Math.random() * 5;
+            if (progress > 100) progress = 100;
             document.getElementById("progress").style.width = progress + "%";
             document.getElementById("status").innerHTML = messages[Math.floor(Math.random() * messages.length)];
             
@@ -113,5 +122,5 @@
             }
         }, 1500);
     </script>
-</body>
-</html>
+    </body>
+    </html>
